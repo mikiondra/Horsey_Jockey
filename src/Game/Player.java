@@ -9,9 +9,9 @@ public class Player {
     private int food;
     private int lasso;
     private int day;
-    private Horse horsey;
+    private Horsey horsey;
 
-    public Player(int money, int food, int lasso, int day, Horse horsey) {
+    public Player(int money, int food, int lasso, int day, Horsey horsey) {
         this.money = money;
         this.food = food;
         this.lasso = lasso;
@@ -51,11 +51,11 @@ public class Player {
         this.day = day;
     }
 
-    public Horse getHorsey() {
+    public Horsey getHorsey() {
         return horsey;
     }
 
-    public void setHorsey(Horse horsey) {
+    public void setHorsey(Horsey horsey) {
         this.horsey = horsey;
     }
 

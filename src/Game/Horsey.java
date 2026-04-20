@@ -3,14 +3,14 @@ package Game;
 /**
  * Class, which horses will use
  */
-public class Horse {
+public class Horsey {
 
     private String name;
     private int str;
     private int hunger;
     private boolean Alive;
 
-    public Horse(String name, int str, int hunger, boolean alive) {
+    public Horsey(String name, int str, int hunger, boolean alive) {
         this.name = name;
         this.str = str;
         this.hunger = hunger;
@@ -51,7 +51,7 @@ public class Horse {
 
     @Override
     public String toString() {
-        return "Horse{" +
+        return "Horsey{" +
                 "name='" + name + '\'' +
                 ", str=" + str +
                 ", hunger=" + hunger +
