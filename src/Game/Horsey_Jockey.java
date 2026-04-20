@@ -14,10 +14,15 @@ public class Horsey_Jockey {
         this.frame = new JFrame("Horsey Jockey");
     }
 
+
     public void Title(){
         this.frame.setSize(980,800);
         this.frame.setLayout(new BorderLayout());
         this.frame.setLocationRelativeTo(null);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+
+        this.frame.setVisible(true);
     }
 }

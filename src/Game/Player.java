@@ -9,12 +9,14 @@ public class Player {
     private int food;
     private int lasso;
     private int day;
+    private Horse horsey;
 
-    public Player(int money, int food, int lasso, int day) {
+    public Player(int money, int food, int lasso, int day, Horse horsey) {
         this.money = money;
         this.food = food;
         this.lasso = lasso;
         this.day = day;
+        this.horsey = horsey;
     }
 
     public int getMoney() {
@@ -49,6 +51,14 @@ public class Player {
         this.day = day;
     }
 
+    public Horse getHorsey() {
+        return horsey;
+    }
+
+    public void setHorsey(Horse horsey) {
+        this.horsey = horsey;
+    }
+
     @Override
     public String toString() {
         return "Player{" +
@@ -56,6 +66,7 @@ public class Player {
                 ", food=" + food +
                 ", lasso=" + lasso +
                 ", day=" + day +
+                ", horsey=" + horsey +
                 '}';
     }
 }
