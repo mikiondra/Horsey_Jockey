@@ -50,7 +50,17 @@ public class Plains {
         });
 
         bury.addActionListener(e ->{
-
+            if(!p.getHorsey().getName().isEmpty()){
+                if(!p.getHorsey().isAlive()){
+                    String deadName = p.getHorsey().getName();
+                    p.setHorsey(new Horsey("",0,0,false));
+                    JOptionPane.showMessageDialog(this.frame, "You have buried " + deadName + " here.");
+                }else{
+                    JOptionPane.showMessageDialog(this.frame, "Your Horsey isn't dead.");
+                }
+            }else{
+                JOptionPane.showMessageDialog(this.frame, "You don't have Horsey to bury here.");
+            }
         });
 
         catched.addActionListener(e ->{

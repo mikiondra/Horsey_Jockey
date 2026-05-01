@@ -41,11 +41,22 @@ public class Ranch {
         });
 
         feed.addActionListener(e ->{
-
+            if(p.getHorsey().isAlive()){
+                if(p.getHorsey().getHunger() < 5 && p.getFood() != 0){
+                    p.getHorsey().setHunger(p.getHorsey().getHunger()+1);
+                    p.setFood(p.getFood()-1);
+                    JOptionPane.showMessageDialog(this.frame, "You have fed your Horsey.");
+                }else {
+                    JOptionPane.showMessageDialog(this.frame, "Your Horsey is well fed.");
+                }
+            }else{
+                JOptionPane.showMessageDialog(this.frame, "You don't have any Horsey to feed.");
+            }
         });
 
         sleep.addActionListener(e ->{
-
+            p.setDay(p.getDay()+1);
+            JOptionPane.showMessageDialog(this.frame,"You have slept to next day.  " + p.getDay() + ". is today.");
         });
 
         this.frame.setVisible(true);
