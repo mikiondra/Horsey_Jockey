@@ -14,7 +14,7 @@ public class Plains {
         this.frame = new JFrame("Plains");
     }
 
-    public void show(){
+    public void show(Player p ,Horsey h){
         this.frame.setSize(1280,1000);
         this.frame.setLayout(new BorderLayout());
         this.frame.setLocationRelativeTo(null);
@@ -36,16 +36,16 @@ public class Plains {
         CustomButtons.actionButton(catched);
         this.frame.add(catched,BorderLayout.CENTER);
 
-        JLabel info = new JLabel("HORSEY",JLabel.CENTER);
+        JLabel info = new JLabel("Money: " + p.getMoney() + " ; Food: " + p.getFood() + " ; Lassos: " + p.getLasso() + " ; Day: " + p.getDay() + " Horsey:" + p.getHorsey().getName() + " ; Str: " + p.getHorsey().getStr() + " ; Hunger: " + p.getHorsey().getHunger() + " ; Status: " + p.getHorsey().isAlive() ,JLabel.CENTER);
         this.frame.add(info,BorderLayout.NORTH);
 
         ranch.addActionListener(e ->{
-            new Ranch().show();
+            new Ranch().show(p,h);
             this.frame.dispose();
         });
 
         towncenter.addActionListener(e ->{
-            new Towncenter().show();
+            new Towncenter().show(p,h);
             this.frame.dispose();
         });
 

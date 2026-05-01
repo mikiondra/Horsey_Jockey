@@ -14,7 +14,7 @@ public class Arena {
         this.frame = new JFrame("Arena");
     }
 
-    public void show(){
+    public void show(Player p,Horsey h){
         this.frame.setSize(1280,1000);
         this.frame.setLayout(new BorderLayout());
         this.frame.setLocationRelativeTo(null);
@@ -28,11 +28,11 @@ public class Arena {
         CustomButtons.actionButton(race);
         this.frame.add(race,BorderLayout.CENTER);
 
-        JLabel info = new JLabel("HORSEY",JLabel.CENTER);
+        JLabel info = new JLabel("Money: " + p.getMoney() + " ; Food: " + p.getFood() + " ; Lassos: " + p.getLasso() + " ; Day: " + p.getDay() + " Horsey:" + p.getHorsey().getName() + " ; Str: " + p.getHorsey().getStr() + " ; Hunger: " + p.getHorsey().getHunger() + " ; Status: " + p.getHorsey().isAlive() ,JLabel.CENTER);
         this.frame.add(info,BorderLayout.NORTH);
 
         towncenter.addActionListener(e ->{
-            new Towncenter().show();
+            new Towncenter().show(p,h);
             this.frame.dispose();
         });
 

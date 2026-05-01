@@ -31,7 +31,9 @@ public class Horsey_Jockey {
         this.frame.add(button,BorderLayout.SOUTH);
 
         button.addActionListener(e ->{
-            new Ranch().show();
+            Horsey h = new Horsey("",0,0,false);
+            Player p =new Player(50,10,3,1,h);
+            new Ranch().show(p,h);
             this.frame.dispose();
         });
 

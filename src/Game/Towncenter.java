@@ -14,7 +14,7 @@ public class Towncenter {
         this.frame = new JFrame("Towncenter");
     }
 
-    public void show(){
+    public void show(Player p,Horsey h){
         this.frame.setSize(1280,1000);
         this.frame.setLayout(new BorderLayout());
         this.frame.setLocationRelativeTo(null);
@@ -36,26 +36,26 @@ public class Towncenter {
         CustomButtons.goButton(market);
         this.frame.add(market,BorderLayout.CENTER);
 
-        JLabel info = new JLabel("HORSEY",JLabel.CENTER);
+        JLabel info = new JLabel("Money: " + p.getMoney() + " ; Food: " + p.getFood() + " ; Lassos: " + p.getLasso() + " ; Day: " + p.getDay() + " Horsey:" + p.getHorsey().getName() + " ; Str: " + p.getHorsey().getStr() + " ; Hunger: " + p.getHorsey().getHunger() + " ; Status: " + p.getHorsey().isAlive() ,JLabel.CENTER);
         this.frame.add(info,BorderLayout.NORTH);
 
         plains.addActionListener(e ->{
-            new Plains().show();
+            new Plains().show(p,h);
             this.frame.dispose();
         });
 
         glue_factory.addActionListener(e ->{
-            new Glue_Factory().show();
+            new Glue_Factory().show(p,h);
             this.frame.dispose();
         });
 
         arena.addActionListener(e ->{
-            new Arena().show();
+            new Arena().show(p,h);
             this.frame.dispose();
         });
 
         market.addActionListener(e ->{
-            new Market().show();
+            new Market().show(p,h);
             this.frame.dispose();
         });
 
