@@ -89,7 +89,7 @@ public class Plains {
                             if(!name.isEmpty()){
                                 Horsey h2 = new Horsey(name,rd.nextInt(23,101), 5,true);
                                 p.setHorsey(h2);
-                                JOptionPane.showMessageDialog(this.frame, "Bravo, you have catched " + p.getHorsey().getName() + " .");
+                                JOptionPane.showMessageDialog(this.frame, "Bravo, you have catched " + p.getHorsey().getName() + ".");
                             }else{
                                 JOptionPane.showMessageDialog(this.frame, "You didn't name this Horsey and thus it ran away, next time name your Horsey.");
                             }

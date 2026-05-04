@@ -14,7 +14,15 @@ public class Market {
         this.frame = new JFrame("Market");
     }
 
-    public void show(Player p,Horsey h){
+    /**
+     * Method, which features three actions:
+     * 'towncenter' moves player to 'Towncenter' window
+     * 'buy_lasso' allows player to buy more lassos
+     * 'buy_food' allows player to buy more food
+     * @param p is player entity
+     * @param h is Horsey entity
+     */
+    public void show(Player p, Horsey h){
         this.frame.setSize(1280,1000);
         this.frame.setLayout(new BorderLayout());
         this.frame.setLocationRelativeTo(null);
@@ -41,13 +49,11 @@ public class Market {
         });
 
         buy_lasso.addActionListener(e ->{
-            int availability = 5;
-            int price = 10;
-            if(availability != 0){
-                if(p.getMoney() > price){
-                    p.setMoney(p.getMoney()-price);
+            if(p.getLassoAvailability() > 0){
+                if(p.getMoney() > p.getLassoPrice()){
+                    p.setMoney(p.getMoney()- p.getLassoPrice());
                     p.setLasso(p.getLasso()+1);
-                    availability = availability-1;
+                    p.setLassoAvailability(p.getLassoAvailability()-1);
                     JOptionPane.showMessageDialog(this.frame, "You have bought one piece of lasso.");
                 }else{
                     JOptionPane.showMessageDialog(this.frame, "You don't have enough to buy this stuff");
@@ -58,13 +64,11 @@ public class Market {
         });
 
         buy_food.addActionListener(e ->{
-            int availability = 5;
-            int price = 4;
-            if(availability >0){
-                if(p.getMoney() > price){
-                    p.setMoney(p.getMoney()-price);
+            if(p.getFoodAvailability() > 0){
+                if(p.getMoney() > p.getFoodPrice()){
+                    p.setMoney(p.getMoney()- p.getFoodPrice());
                     p.setFood(p.getFood()+1);
-                    availability = availability-1;
+                    p.setFoodAvailability(p.getFoodAvailability()-1);
                     JOptionPane.showMessageDialog(this.frame, "You have bought one piece of food.");
                 }else{
                     JOptionPane.showMessageDialog(this.frame, "You don't have enough to buy this stuff");

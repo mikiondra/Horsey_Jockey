@@ -11,6 +11,13 @@ public class Player {
     private int day;
     private Horsey horsey;
 
+    // instances for other classes, but gives here due to saving changed instances instead of changing each time
+
+    private int foodAvailability = 5;
+    private int LassoAvailability = 5;
+    private int foodPrice = 4;
+    private int lassoPrice = 10;
+
     public Player(int money, int food, int lasso, int day, Horsey horsey) {
         this.money = money;
         this.food = food;
@@ -59,6 +66,38 @@ public class Player {
         this.horsey = horsey;
     }
 
+    public int getFoodAvailability() {
+        return foodAvailability;
+    }
+
+    public void setFoodAvailability(int foodAvailability) {
+        this.foodAvailability = foodAvailability;
+    }
+
+    public int getLassoAvailability() {
+        return LassoAvailability;
+    }
+
+    public void setLassoAvailability(int lassoAvailability) {
+        LassoAvailability = lassoAvailability;
+    }
+
+    public int getFoodPrice() {
+        return foodPrice;
+    }
+
+    public void setFoodPrice(int foodPrice) {
+        this.foodPrice = foodPrice;
+    }
+
+    public int getLassoPrice() {
+        return lassoPrice;
+    }
+
+    public void setLassoPrice(int lassoPrice) {
+        this.lassoPrice = lassoPrice;
+    }
+
     @Override
     public String toString() {
         return "Player{" +
@@ -67,6 +106,10 @@ public class Player {
                 ", lasso=" + lasso +
                 ", day=" + day +
                 ", horsey=" + horsey +
+                ", foodAvailability=" + foodAvailability +
+                ", LassoAvailability=" + LassoAvailability +
+                ", foodPrice=" + foodPrice +
+                ", lassoPrice=" + lassoPrice +
                 '}';
     }
 }
