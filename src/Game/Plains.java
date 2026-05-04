@@ -2,6 +2,7 @@ package Game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 /**
  * Class, where player can catch and bury horsies
@@ -14,6 +15,15 @@ public class Plains {
         this.frame = new JFrame("Plains");
     }
 
+    /**
+     * Method, which features four actions:
+     * 'ranch' moves player to 'Ranch' window
+     * 'towncenter' moves player to 'Towncenter' window
+     * 'bury' allows player to bury their dead Horsey
+     * 'catched' allows player to catch new Horsey and name them or let them go free
+     * @param p is player entity
+     * @param h is Horsey entity
+     */
     public void show(Player p ,Horsey h){
         this.frame.setSize(1280,1000);
         this.frame.setLayout(new BorderLayout());
@@ -36,7 +46,7 @@ public class Plains {
         CustomButtons.actionButton(catched);
         this.frame.add(catched,BorderLayout.CENTER);
 
-        JLabel info = new JLabel("Money: " + p.getMoney() + " ; Food: " + p.getFood() + " ; Lassos: " + p.getLasso() + " ; Day: " + p.getDay() + " Horsey:" + p.getHorsey().getName() + " ; Str: " + p.getHorsey().getStr() + " ; Hunger: " + p.getHorsey().getHunger() + " ; Status: " + p.getHorsey().isAlive() ,JLabel.CENTER);
+        JLabel info = new JLabel("Money: " + p.getMoney() + " ; Food: " + p.getFood() + " ; Lassos: " + p.getLasso() + " ; Day: " + p.getDay() + " Horsey: " + p.getHorsey().getName() + " ; Str: " + p.getHorsey().getStr() + " ; Hunger: " + p.getHorsey().getHunger() + " ; Status: " + p.getHorsey().isAlive() ,JLabel.CENTER);
         this.frame.add(info,BorderLayout.NORTH);
 
         ranch.addActionListener(e ->{
@@ -64,8 +74,40 @@ public class Plains {
         });
 
         catched.addActionListener(e ->{
-
+            Random rd = new Random();
+            int chance;
+            int capture;
+            String name;
+            if(p.getHorsey().getName().isEmpty()){
+                if(p.getLasso() != 0){
+                    chance = rd.nextInt(10,101);
+                    capture = rd.nextInt(0,101);
+                    if(capture >= chance){
+                        p.setLasso(p.getLasso()-1);
+                        name = JOptionPane.showInputDialog(this.frame, "Write your Horsey's name.");
+                        if(name != null){
+                            if(!name.isEmpty()){
+                                Horsey h2 = new Horsey(name,rd.nextInt(23,101), 5,true);
+                                p.setHorsey(h2);
+                                JOptionPane.showMessageDialog(this.frame, "Bravo, you have catched " + p.getHorsey().getName() + " .");
+                            }else{
+                                JOptionPane.showMessageDialog(this.frame, "You didn't name this Horsey and thus it ran away, next time name your Horsey.");
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(this.frame, "You decided to let this Horsey go free.");
+                        }
+                    }else{
+                        p.setLasso(p.getLasso()-1);
+                        JOptionPane.showMessageDialog(this.frame, "Better luck next time.");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this.frame, "You don't have any lasso.");
+                }
+            }else{
+                JOptionPane.showMessageDialog(this.frame, "You already have Horsey.");
+            }
         });
+
         this.frame.setVisible(true);
     }
 }

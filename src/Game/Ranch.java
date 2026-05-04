@@ -14,6 +14,14 @@ public class Ranch {
      this.frame = new JFrame("Ranch");
     }
 
+    /**
+     * Method, which features three actions:
+     * 'plains' moves player to 'Plains' window
+     * 'feed' allows player to feed their Horsey
+     * 'sleep' allows player to sleep to next day, which will affect 'Market' and 'Arena'
+     * @param p is player entity
+     * @param h is Horsey entity
+     */
     public void show(Player p ,Horsey h){
         this.frame.setSize(1280,1000);
         this.frame.setLayout(new BorderLayout());
@@ -32,7 +40,7 @@ public class Ranch {
         CustomButtons.actionButton(sleep);
         this.frame.add(sleep,BorderLayout.EAST);
 
-        JLabel info = new JLabel("Money: " + p.getMoney() + " ; Food: " + p.getFood() + " ; Lassos: " + p.getLasso() + " ; Day: " + p.getDay() + " Horsey:" + p.getHorsey().getName() + " ; Str: " + p.getHorsey().getStr() + " ; Hunger: " + p.getHorsey().getHunger() + " ; Status: " + p.getHorsey().isAlive() ,JLabel.CENTER);
+        JLabel info = new JLabel("Money: " + p.getMoney() + " ; Food: " + p.getFood() + " ; Lassos: " + p.getLasso() + " ; Day: " + p.getDay() + " Horsey: " + p.getHorsey().getName() + " ; Str: " + p.getHorsey().getStr() + " ; Hunger: " + p.getHorsey().getHunger() + " ; Status: " + p.getHorsey().isAlive() ,JLabel.CENTER);
         this.frame.add(info,BorderLayout.NORTH);
 
         plains.addActionListener(e ->{
@@ -41,16 +49,20 @@ public class Ranch {
         });
 
         feed.addActionListener(e ->{
-            if(p.getHorsey().isAlive()){
-                if(p.getHorsey().getHunger() < 5 && p.getFood() != 0){
-                    p.getHorsey().setHunger(p.getHorsey().getHunger()+1);
-                    p.setFood(p.getFood()-1);
-                    JOptionPane.showMessageDialog(this.frame, "You have fed your Horsey.");
-                }else {
-                    JOptionPane.showMessageDialog(this.frame, "Your Horsey is well fed.");
+            if(!p.getHorsey().getName().isEmpty()){
+                if(p.getHorsey().isAlive()){
+                    if(p.getHorsey().getHunger() < 5 && p.getFood() != 0){
+                        p.getHorsey().setHunger(p.getHorsey().getHunger()+1);
+                        p.setFood(p.getFood()-1);
+                        JOptionPane.showMessageDialog(this.frame, "You have fed your Horsey.");
+                    }else {
+                        JOptionPane.showMessageDialog(this.frame, "Your Horsey is well fed.");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this.frame, "You don't have any Horsey to feed.");
                 }
             }else{
-                JOptionPane.showMessageDialog(this.frame, "You don't have any Horsey to feed.");
+                JOptionPane.showMessageDialog(this.frame, "You don't have Horsey to feed.");
             }
         });
 

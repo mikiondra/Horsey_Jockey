@@ -15,7 +15,7 @@ public class Horsey_Jockey {
     }
 
     /**
-     * Class, where the program will begin and where player can start the game
+     * Method, where the program will begin and where player can start the game
      */
     public void Title(){
         this.frame.setSize(1280,1000);
@@ -32,7 +32,7 @@ public class Horsey_Jockey {
 
         button.addActionListener(e ->{
             Horsey h = new Horsey("",0,0,false);
-            Player p =new Player(50,10,3,1,h);
+            Player p =new Player(25,5,3,1,h);
             new Ranch().show(p,h);
             this.frame.dispose();
         });
