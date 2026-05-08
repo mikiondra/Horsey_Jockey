@@ -14,7 +14,7 @@ public class Arena {
         this.frame = new JFrame("Arena");
     }
 
-    public void show(Player p,Horsey h){
+    public void show(Player p){
         this.frame.setSize(1280,1000);
         this.frame.setLayout(new BorderLayout());
         this.frame.setLocationRelativeTo(null);
@@ -32,7 +32,7 @@ public class Arena {
         this.frame.add(info,BorderLayout.NORTH);
 
         towncenter.addActionListener(e ->{
-            new Towncenter().show(p,h);
+            new Towncenter().show(p);
             this.frame.dispose();
         });
 

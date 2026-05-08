@@ -20,9 +20,8 @@ public class Market {
      * 'buy_lasso' allows player to buy more lassos
      * 'buy_food' allows player to buy more food
      * @param p is player entity
-     * @param h is Horsey entity
      */
-    public void show(Player p, Horsey h){
+    public void show(Player p){
         this.frame.setSize(1280,1000);
         this.frame.setLayout(new BorderLayout());
         this.frame.setLocationRelativeTo(null);
@@ -32,11 +31,11 @@ public class Market {
         CustomButtons.goButton(towncenter);
         this.frame.add(towncenter,BorderLayout.CENTER);
 
-        JButton buy_lasso = new JButton("Buy lassos");
+        JButton buy_lasso = new JButton("Buy lassos: " + p.getLassoPrice());
         CustomButtons.actionButton(buy_lasso);
         this.frame.add(buy_lasso,BorderLayout.WEST);
 
-        JButton buy_food = new JButton("Buy food");
+        JButton buy_food = new JButton("Buy food: " + p.getFoodPrice());
         CustomButtons.actionButton(buy_food);
         this.frame.add(buy_food,BorderLayout.EAST);
 
@@ -44,7 +43,7 @@ public class Market {
         this.frame.add(info,BorderLayout.NORTH);
 
         towncenter.addActionListener(e ->{
-            new Towncenter().show(p,h);
+            new Towncenter().show(p);
             this.frame.dispose();
         });
 

@@ -22,9 +22,8 @@ public class Plains {
      * 'bury' allows player to bury their dead Horsey
      * 'catched' allows player to catch new Horsey and name them or let them go free
      * @param p is player entity
-     * @param h is Horsey entity
      */
-    public void show(Player p ,Horsey h){
+    public void show(Player p){
         this.frame.setSize(1280,1000);
         this.frame.setLayout(new BorderLayout());
         this.frame.setLocationRelativeTo(null);
@@ -50,12 +49,12 @@ public class Plains {
         this.frame.add(info,BorderLayout.NORTH);
 
         ranch.addActionListener(e ->{
-            new Ranch().show(p,h);
+            new Ranch().show(p);
             this.frame.dispose();
         });
 
         towncenter.addActionListener(e ->{
-            new Towncenter().show(p,h);
+            new Towncenter().show(p);
             this.frame.dispose();
         });
 
@@ -85,16 +84,12 @@ public class Plains {
                     if(capture >= chance){
                         p.setLasso(p.getLasso()-1);
                         name = JOptionPane.showInputDialog(this.frame, "Write your Horsey's name.");
-                        if(name != null){
-                            if(!name.isEmpty()){
-                                Horsey h2 = new Horsey(name,rd.nextInt(23,101), 5,true);
-                                p.setHorsey(h2);
-                                JOptionPane.showMessageDialog(this.frame, "Bravo, you have catched " + p.getHorsey().getName() + ".");
-                            }else{
-                                JOptionPane.showMessageDialog(this.frame, "You didn't name this Horsey and thus it ran away, next time name your Horsey.");
-                            }
+                        if (name != null) {
+                            Horsey h2 = new Horsey(name,rd.nextInt(23,101), 5,true);
+                            p.setHorsey(h2);
+                            JOptionPane.showMessageDialog(this.frame, "Bravo, you have catched " + p.getHorsey().getName() + ".");
                         }else{
-                            JOptionPane.showMessageDialog(this.frame, "You decided to let this Horsey go free.");
+                            JOptionPane.showMessageDialog(this.frame, "Better luck next time.");
                         }
                     }else{
                         p.setLasso(p.getLasso()-1);

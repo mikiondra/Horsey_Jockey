@@ -33,7 +33,7 @@ public class Horsey_Jockey {
         button.addActionListener(e ->{
             Horsey h = new Horsey("",0,0,false);
             Player p =new Player(25,5,3,1,h);
-            new Ranch().show(p,h);
+            new Ranch().show(p);
             this.frame.dispose();
         });
 

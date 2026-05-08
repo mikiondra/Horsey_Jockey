@@ -2,6 +2,7 @@ package Game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 /**
  * Class, where game will begin and where player can feed the horsey and skip days
@@ -20,9 +21,8 @@ public class Ranch {
      * 'feed' allows player to feed their Horsey
      * 'sleep' allows player to sleep to next day, which will affect 'Market' and 'Arena'
      * @param p is player entity
-     * @param h is Horsey entity
      */
-    public void show(Player p ,Horsey h){
+    public void show(Player p){
         this.frame.setSize(1280,1000);
         this.frame.setLayout(new BorderLayout());
         this.frame.setLocationRelativeTo(null);
@@ -44,7 +44,7 @@ public class Ranch {
         this.frame.add(info,BorderLayout.NORTH);
 
         plains.addActionListener(e ->{
-            new Plains().show(p,h);
+            new Plains().show(p);
             this.frame.dispose();
         });
 
@@ -67,7 +67,20 @@ public class Ranch {
         });
 
         sleep.addActionListener(e ->{
+            Random rd = new Random();
             p.setDay(p.getDay()+1);
+            p.setLassoAvailability(5);
+            p.setFoodAvailability(5);
+            if(p.getLassoPrice() <= 0){
+                p.setLassoPrice(13);
+            }else{
+                p.setLassoPrice(p.getLassoPrice() + rd.nextInt(-5,11));
+            }
+            if(p.getFoodPrice() <= 0){
+                p.setFoodPrice(7);
+            }else{
+                p.setFoodPrice(p.getFoodPrice() + rd.nextInt(-3, 6));
+            }
             JOptionPane.showMessageDialog(this.frame,"You have slept to next day.  " + p.getDay() + ". is today.");
         });
 

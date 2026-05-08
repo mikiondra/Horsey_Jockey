@@ -21,9 +21,8 @@ public class Towncenter {
      * 'arena' moves player to 'Arena' window
      * 'market' moves player to 'Market' window
      * @param p is player entity
-     * @param h is Horsey entity
      */
-    public void show(Player p,Horsey h){
+    public void show(Player p){
         this.frame.setSize(1280,1000);
         this.frame.setLayout(new BorderLayout());
         this.frame.setLocationRelativeTo(null);
@@ -49,22 +48,22 @@ public class Towncenter {
         this.frame.add(info,BorderLayout.NORTH);
 
         plains.addActionListener(e ->{
-            new Plains().show(p,h);
+            new Plains().show(p);
             this.frame.dispose();
         });
 
         glue_factory.addActionListener(e ->{
-            new Glue_Factory().show(p,h);
+            new Glue_Factory().show(p);
             this.frame.dispose();
         });
 
         arena.addActionListener(e ->{
-            new Arena().show(p,h);
+            new Arena().show(p);
             this.frame.dispose();
         });
 
         market.addActionListener(e ->{
-            new Market().show(p,h);
+            new Market().show(p);
             this.frame.dispose();
         });
 
