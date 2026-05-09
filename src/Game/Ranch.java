@@ -19,7 +19,7 @@ public class Ranch {
      * Method, which features three actions:
      * 'plains' moves player to 'Plains' window
      * 'feed' allows player to feed their Horsey
-     * 'sleep' allows player to sleep to next day, which will affect 'Market' and 'Arena'
+     * 'sleep' allows player to sleep to next day, which will affect 'Market', 'Arena' and 'Glue_Factory'
      * @param p is player entity
      */
     public void show(Player p){
@@ -51,11 +51,15 @@ public class Ranch {
         feed.addActionListener(e ->{
             if(!p.getHorsey().getName().isEmpty()){
                 if(p.getHorsey().isAlive()){
-                    if(p.getHorsey().getHunger() < 5 && p.getFood() != 0){
-                        p.getHorsey().setHunger(p.getHorsey().getHunger()+1);
-                        p.setFood(p.getFood()-1);
-                        JOptionPane.showMessageDialog(this.frame, "You have fed your Horsey.");
-                    }else {
+                    if(p.getHorsey().getHunger() < 5){
+                        if(p.getFood() != 0){
+                            p.getHorsey().setHunger(p.getHorsey().getHunger()+1);
+                            p.setFood(p.getFood()-1);
+                            JOptionPane.showMessageDialog(this.frame, "You have fed your Horsey.");
+                        }else{
+                            JOptionPane.showMessageDialog(this.frame, "You don't have any food to feed Horsey.");
+                        }
+                    }else{
                         JOptionPane.showMessageDialog(this.frame, "Your Horsey is well fed.");
                     }
                 }else{
@@ -71,6 +75,7 @@ public class Ranch {
             p.setDay(p.getDay()+1);
             p.setLassoAvailability(5);
             p.setFoodAvailability(5);
+            p.setEnhancePrice(p.getEnhancePrice()+1);
             if(p.getLassoPrice() <= 0){
                 p.setLassoPrice(13);
             }else{

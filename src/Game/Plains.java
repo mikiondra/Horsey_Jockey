@@ -20,7 +20,7 @@ public class Plains {
      * 'ranch' moves player to 'Ranch' window
      * 'towncenter' moves player to 'Towncenter' window
      * 'bury' allows player to bury their dead Horsey
-     * 'catched' allows player to catch new Horsey and name them or let them go free
+     * 'caught' allows player to catch new Horsey and name them or let them go free
      * @param p is player entity
      */
     public void show(Player p){
@@ -41,9 +41,9 @@ public class Plains {
         CustomButtons.actionButton(bury);
         this.frame.add(bury,BorderLayout.SOUTH);
 
-        JButton catched = new JButton("Catch the Horsey");
-        CustomButtons.actionButton(catched);
-        this.frame.add(catched,BorderLayout.CENTER);
+        JButton caught = new JButton("Catch the Horsey");
+        CustomButtons.actionButton(caught);
+        this.frame.add(caught,BorderLayout.CENTER);
 
         JLabel info = new JLabel("Money: " + p.getMoney() + " ; Food: " + p.getFood() + " ; Lassos: " + p.getLasso() + " ; Day: " + p.getDay() + " Horsey: " + p.getHorsey().getName() + " ; Str: " + p.getHorsey().getStr() + " ; Hunger: " + p.getHorsey().getHunger() + " ; Status: " + p.getHorsey().isAlive() ,JLabel.CENTER);
         this.frame.add(info,BorderLayout.NORTH);
@@ -72,7 +72,7 @@ public class Plains {
             }
         });
 
-        catched.addActionListener(e ->{
+        caught.addActionListener(e ->{
             Random rd = new Random();
             int chance;
             int capture;
@@ -81,18 +81,17 @@ public class Plains {
                 if(p.getLasso() != 0){
                     chance = rd.nextInt(10,101);
                     capture = rd.nextInt(0,101);
+                    p.setLasso(p.getLasso()-1);
                     if(capture >= chance){
-                        p.setLasso(p.getLasso()-1);
                         name = JOptionPane.showInputDialog(this.frame, "Write your Horsey's name.");
                         if (name != null) {
                             Horsey h2 = new Horsey(name,rd.nextInt(23,101), 5,true);
                             p.setHorsey(h2);
-                            JOptionPane.showMessageDialog(this.frame, "Bravo, you have catched " + p.getHorsey().getName() + ".");
+                            JOptionPane.showMessageDialog(this.frame, "Bravo, you have caught " + p.getHorsey().getName() + ".");
                         }else{
                             JOptionPane.showMessageDialog(this.frame, "Better luck next time.");
                         }
                     }else{
-                        p.setLasso(p.getLasso()-1);
                         JOptionPane.showMessageDialog(this.frame, "Better luck next time.");
                     }
                 }else{

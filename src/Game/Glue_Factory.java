@@ -2,6 +2,7 @@ package Game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 /**
  * Class, where can player sold dead bodies of horsies and enhanced their horsies
@@ -24,7 +25,7 @@ public class Glue_Factory {
         CustomButtons.goButton(towncenter);
         this.frame.add(towncenter,BorderLayout.WEST);
 
-        JButton enhance = new JButton("Enhance the Horsey");
+        JButton enhance = new JButton("Enhance the Horsey: " + p.getEnhancePrice());
         CustomButtons.actionButton(enhance);
         this.frame.add(enhance,BorderLayout.SOUTH);
 
@@ -41,7 +42,33 @@ public class Glue_Factory {
         });
 
         enhance.addActionListener(e ->{
-
+            Random rd = new Random();
+            int chance;
+            int strGain;
+            if(!p.getHorsey().getName().isEmpty()){
+                if(p.getHorsey().isAlive()){
+                    p.setMoney(p.getMoney() - p.getEnhancePrice());
+                    if(p.getHorsey().getHunger() > 2){
+                        chance = rd.nextInt(0,101);
+                        if(chance > 50){
+                            strGain = rd.nextInt(1,11);
+                            p.getHorsey().setStr(p.getHorsey().getStr() + strGain);
+                            p.getHorsey().setHunger(p.getHorsey().getHunger() - 2);
+                            JOptionPane.showMessageDialog(this.frame, "Your Horsey has been enhanced by: " + strGain);
+                        }else{
+                            p.getHorsey().setAlive(false);
+                            JOptionPane.showMessageDialog(this.frame, "Your Horsey died during the enhancing process.");
+                        }
+                    }else{
+                        p.getHorsey().setAlive(false);
+                        JOptionPane.showMessageDialog(this.frame, "Your Horsey died during the enhancing process.");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this.frame, "You can't enhance dead Horsey.");
+                }
+            }else{
+                JOptionPane.showMessageDialog(this.frame, "You don't have Horsey to enhance.");
+            }
         });
 
         sell.addActionListener(e ->{
