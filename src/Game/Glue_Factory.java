@@ -15,6 +15,13 @@ public class Glue_Factory {
         this.frame = new JFrame("Glue factory");
     }
 
+    /**
+     * Method, which features three actions:
+     * 'towncenter' moves player to 'Towncenter' window
+     * 'enhance' enhances player's Horsey, but it can kill him too, for price
+     * 'sell' enables player to sell their Horsey's dead body for price
+     * @param p is player entity
+     */
     public void show(Player p){
         this.frame.setSize(1280,1000);
         this.frame.setLayout(new BorderLayout());
@@ -47,21 +54,25 @@ public class Glue_Factory {
             int strGain;
             if(!p.getHorsey().getName().isEmpty()){
                 if(p.getHorsey().isAlive()){
-                    p.setMoney(p.getMoney() - p.getEnhancePrice());
-                    if(p.getHorsey().getHunger() > 2){
-                        chance = rd.nextInt(0,101);
-                        if(chance > 50){
-                            strGain = rd.nextInt(1,11);
-                            p.getHorsey().setStr(p.getHorsey().getStr() + strGain);
-                            p.getHorsey().setHunger(p.getHorsey().getHunger() - 2);
-                            JOptionPane.showMessageDialog(this.frame, "Your Horsey has been enhanced by: " + strGain);
+                    if(p.getMoney() > p.getEnhancePrice()){
+                        p.setMoney(p.getMoney() - p.getEnhancePrice());
+                        if(p.getHorsey().getHunger() > 2){
+                            chance = rd.nextInt(0,101);
+                            if(chance > 50){
+                                strGain = rd.nextInt(1,11);
+                                p.getHorsey().setStr(p.getHorsey().getStr() + strGain);
+                                p.getHorsey().setHunger(p.getHorsey().getHunger() - 2);
+                                JOptionPane.showMessageDialog(this.frame, "Your Horsey has been enhanced by: " + strGain);
+                            }else{
+                                p.getHorsey().setAlive(false);
+                                JOptionPane.showMessageDialog(this.frame, "Your Horsey died during the enhancing process.");
+                            }
                         }else{
                             p.getHorsey().setAlive(false);
                             JOptionPane.showMessageDialog(this.frame, "Your Horsey died during the enhancing process.");
                         }
                     }else{
-                        p.getHorsey().setAlive(false);
-                        JOptionPane.showMessageDialog(this.frame, "Your Horsey died during the enhancing process.");
+                        JOptionPane.showMessageDialog(this.frame, "You don't have money to enhance your Horsey.");
                     }
                 }else{
                     JOptionPane.showMessageDialog(this.frame, "You can't enhance dead Horsey.");
@@ -72,7 +83,19 @@ public class Glue_Factory {
         });
 
         sell.addActionListener(e ->{
-
+            if(!p.getHorsey().getName().isEmpty()){
+                if(!p.getHorsey().isAlive()){
+                    String name = p.getHorsey().getName();
+                    Horsey h = new Horsey("",0,0,false);
+                    p.setHorsey(h);
+                    p.setMoney(p.getMoney()+10);
+                    JOptionPane.showMessageDialog(this.frame, "You have sold " + name + " dead body and gained 10 money.");
+                }else{
+                    JOptionPane.showMessageDialog(this.frame, "You can't sell living Horsey.");
+                }
+            }else{
+                JOptionPane.showMessageDialog(this.frame, "You don't have Horsey to sell.");
+            }
         });
 
         this.frame.setVisible(true);
