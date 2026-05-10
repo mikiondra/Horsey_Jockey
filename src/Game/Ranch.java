@@ -76,6 +76,7 @@ public class Ranch {
             p.setLassoAvailability(5);
             p.setFoodAvailability(5);
             p.setEnhancePrice(p.getEnhancePrice()+1);
+            p.setRaces(3);
             if(p.getLassoPrice() <= 0){
                 p.setLassoPrice(13);
             }else{

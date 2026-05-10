@@ -18,6 +18,7 @@ public class Player {
     private int foodPrice = 4;
     private int lassoPrice = 10;
     private int enhancePrice = 30;
+    private int races = 3;
 
     public Player(int money, int food, int lasso, int day, Horsey horsey) {
         this.money = money;
@@ -107,6 +108,14 @@ public class Player {
         this.enhancePrice = enhancePrice;
     }
 
+    public int getRaces() {
+        return races;
+    }
+
+    public void setRaces(int races) {
+        this.races = races;
+    }
+
     @Override
     public String toString() {
         return "Player{" +
@@ -120,6 +129,7 @@ public class Player {
                 ", foodPrice=" + foodPrice +
                 ", lassoPrice=" + lassoPrice +
                 ", enhancePrice=" + enhancePrice +
+                ", races=" + races +
                 '}';
     }
 }

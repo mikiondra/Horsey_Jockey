@@ -54,25 +54,29 @@ public class Glue_Factory {
             int strGain;
             if(!p.getHorsey().getName().isEmpty()){
                 if(p.getHorsey().isAlive()){
-                    if(p.getMoney() > p.getEnhancePrice()){
-                        p.setMoney(p.getMoney() - p.getEnhancePrice());
-                        if(p.getHorsey().getHunger() > 2){
-                            chance = rd.nextInt(0,101);
-                            if(chance > 50){
-                                strGain = rd.nextInt(1,11);
-                                p.getHorsey().setStr(p.getHorsey().getStr() + strGain);
-                                p.getHorsey().setHunger(p.getHorsey().getHunger() - 2);
-                                JOptionPane.showMessageDialog(this.frame, "Your Horsey has been enhanced by: " + strGain);
+                    if(p.getHorsey().getStr() <= 90){
+                        if(p.getMoney() > p.getEnhancePrice()){
+                            p.setMoney(p.getMoney() - p.getEnhancePrice());
+                            if(p.getHorsey().getHunger() > 2){
+                                chance = rd.nextInt(0,101);
+                                if(chance > 50){
+                                    strGain = rd.nextInt(1,11);
+                                    p.getHorsey().setStr(p.getHorsey().getStr() + strGain);
+                                    p.getHorsey().setHunger(p.getHorsey().getHunger() - 2);
+                                    JOptionPane.showMessageDialog(this.frame, "Your Horsey has been enhanced by: " + strGain);
+                                }else{
+                                    p.getHorsey().setAlive(false);
+                                    JOptionPane.showMessageDialog(this.frame, "Your Horsey died during the enhancing process.");
+                                }
                             }else{
                                 p.getHorsey().setAlive(false);
                                 JOptionPane.showMessageDialog(this.frame, "Your Horsey died during the enhancing process.");
                             }
                         }else{
-                            p.getHorsey().setAlive(false);
-                            JOptionPane.showMessageDialog(this.frame, "Your Horsey died during the enhancing process.");
+                            JOptionPane.showMessageDialog(this.frame, "You don't have money to enhance your Horsey.");
                         }
                     }else{
-                        JOptionPane.showMessageDialog(this.frame, "You don't have money to enhance your Horsey.");
+                        JOptionPane.showMessageDialog(this.frame, "Your Horsey is strong enough.");
                     }
                 }else{
                     JOptionPane.showMessageDialog(this.frame, "You can't enhance dead Horsey.");
