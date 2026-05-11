@@ -33,11 +33,11 @@ public class Glue_Factory {
         this.frame.add(towncenter,BorderLayout.WEST);
 
         JButton enhance = new JButton("Enhance the Horsey: " + p.getEnhancePrice());
-        CustomButtons.actionButton(enhance);
+        CustomButtons.buyButton(enhance);
         this.frame.add(enhance,BorderLayout.SOUTH);
 
         JButton sell = new JButton("Sell the dead Horsey");
-        CustomButtons.actionButton(sell);
+        CustomButtons.deadBodyButton(sell);
         this.frame.add(sell,BorderLayout.EAST);
 
         JLabel info = new JLabel("Money: " + p.getMoney() + " ; Food: " + p.getFood() + " ; Lassos: " + p.getLasso() + " ; Day: " + p.getDay() + " Horsey: " + p.getHorsey().getName() + " ; Str: " + p.getHorsey().getStr() + " ; Hunger: " + p.getHorsey().getHunger() + " ; Status: " + p.getHorsey().isAlive() ,JLabel.CENTER);

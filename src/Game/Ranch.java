@@ -33,11 +33,11 @@ public class Ranch {
         this.frame.add(plains,BorderLayout.WEST);
 
         JButton feed = new JButton("Feed the Horsey");
-        CustomButtons.actionButton(feed);
+        CustomButtons.HorseyButton(feed);
         this.frame.add(feed,BorderLayout.SOUTH);
 
         JButton sleep = new JButton("Sleep to next day");
-        CustomButtons.actionButton(sleep);
+        CustomButtons.nightButton(sleep);
         this.frame.add(sleep,BorderLayout.EAST);
 
         JLabel info = new JLabel("Money: " + p.getMoney() + " ; Food: " + p.getFood() + " ; Lassos: " + p.getLasso() + " ; Day: " + p.getDay() + " Horsey: " + p.getHorsey().getName() + " ; Str: " + p.getHorsey().getStr() + " ; Hunger: " + p.getHorsey().getHunger() + " ; Status: " + p.getHorsey().isAlive() ,JLabel.CENTER);

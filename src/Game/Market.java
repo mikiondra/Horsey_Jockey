@@ -32,11 +32,11 @@ public class Market {
         this.frame.add(towncenter,BorderLayout.CENTER);
 
         JButton buy_lasso = new JButton("Buy lassos: " + p.getLassoPrice());
-        CustomButtons.actionButton(buy_lasso);
+        CustomButtons.buyButton(buy_lasso);
         this.frame.add(buy_lasso,BorderLayout.WEST);
 
         JButton buy_food = new JButton("Buy food: " + p.getFoodPrice());
-        CustomButtons.actionButton(buy_food);
+        CustomButtons.buyButton(buy_food);
         this.frame.add(buy_food,BorderLayout.EAST);
 
         JLabel info = new JLabel("Money: " + p.getMoney() + " ; Food: " + p.getFood() + " ; Lassos: " + p.getLasso() + " ; Day: " + p.getDay() + " Horsey: " + p.getHorsey().getName() + " ; Str: " + p.getHorsey().getStr() + " ; Hunger: " + p.getHorsey().getHunger() + " ; Status: " + p.getHorsey().isAlive() ,JLabel.CENTER);

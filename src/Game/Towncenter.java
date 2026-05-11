@@ -41,7 +41,7 @@ public class Towncenter {
         this.frame.add(arena,BorderLayout.SOUTH);
 
         JButton market = new JButton("Go to the Market");
-        CustomButtons.goButton(market);
+        CustomButtons.marketButton(market);
         this.frame.add(market,BorderLayout.CENTER);
 
         JLabel info = new JLabel("Money: " + p.getMoney() + " ; Food: " + p.getFood() + " ; Lassos: " + p.getLasso() + " ; Day: " + p.getDay() + " Horsey: " + p.getHorsey().getName() + " ; Str: " + p.getHorsey().getStr() + " ; Hunger: " + p.getHorsey().getHunger() + " ; Status: " + p.getHorsey().isAlive() ,JLabel.CENTER);

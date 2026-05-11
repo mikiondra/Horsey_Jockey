@@ -32,7 +32,7 @@ public class Arena {
         this.frame.add(towncenter,BorderLayout.SOUTH);
 
         JButton race = new JButton("Sign your Horsey for the race");
-        CustomButtons.actionButton(race);
+        CustomButtons.raceButton(race);
         this.frame.add(race,BorderLayout.CENTER);
 
         JLabel info = new JLabel("Money: " + p.getMoney() + " ; Food: " + p.getFood() + " ; Lassos: " + p.getLasso() + " ; Day: " + p.getDay() + " Horsey: " + p.getHorsey().getName() + " ; Str: " + p.getHorsey().getStr() + " ; Hunger: " + p.getHorsey().getHunger() + " ; Status: " + p.getHorsey().isAlive() ,JLabel.CENTER);

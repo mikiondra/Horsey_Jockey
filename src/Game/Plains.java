@@ -38,11 +38,11 @@ public class Plains {
         this.frame.add(towncenter,BorderLayout.EAST);
 
         JButton bury = new JButton("Bury the Horsey");
-        CustomButtons.actionButton(bury);
+        CustomButtons.deadBodyButton(bury);
         this.frame.add(bury,BorderLayout.SOUTH);
 
         JButton caught = new JButton("Catch the Horsey");
-        CustomButtons.actionButton(caught);
+        CustomButtons.HorseyButton(caught);
         this.frame.add(caught,BorderLayout.CENTER);
 
         JLabel info = new JLabel("Money: " + p.getMoney() + " ; Food: " + p.getFood() + " ; Lassos: " + p.getLasso() + " ; Day: " + p.getDay() + " Horsey: " + p.getHorsey().getName() + " ; Str: " + p.getHorsey().getStr() + " ; Hunger: " + p.getHorsey().getHunger() + " ; Status: " + p.getHorsey().isAlive() ,JLabel.CENTER);
