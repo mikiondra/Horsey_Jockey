@@ -92,7 +92,7 @@ public class Glue_Factory {
                     String name = p.getHorsey().getName();
                     Horsey h = new Horsey("",0,0,false);
                     p.setHorsey(h);
-                    p.setMoney(p.getMoney()+10);
+                    p.setMoney(p.getMoney()+15);
                     JOptionPane.showMessageDialog(this.frame, "You have sold " + name + " dead body and gained 10 money.");
                 }else{
                     JOptionPane.showMessageDialog(this.frame, "You can't sell living Horsey.");

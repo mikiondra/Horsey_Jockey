@@ -48,6 +48,7 @@ public class Arena {
             int bet;
             int earnings;
             int chance;
+            int death;
             if(!p.getHorsey().getName().isEmpty()){
                 if(p.getHorsey().isAlive()){
                    if(p.getMoney() > 10){
@@ -59,19 +60,20 @@ public class Arena {
                                bet = Integer.parseInt(betInput.trim());
                                if(bet > 10){
                                    earnings = bet*2;
+                                   death = rd.nextInt(1,3);
                                    p.setMoney(p.getMoney() - bet);
                                    p.getHorsey().setHunger(p.getHorsey().getHunger() - 2);
                                    p.setRaces(p.getRaces()-1);
-                                   chance = rd.nextInt(15,101);
+                                   chance = rd.nextInt(25,101);
                                    if(p.getHorsey().getStr() > chance){
                                        p.setMoney(p.getMoney() + earnings);
                                        JOptionPane.showMessageDialog(this.frame, "You have won " + earnings + " money.");
                                    }else{
                                        JOptionPane.showMessageDialog(this.frame, "You have lost your bet.");
-                                       if(p.getHorsey().getHunger() < 1){
-                                           p.getHorsey().setAlive(false);
-                                           JOptionPane.showMessageDialog(this.frame, "Your Horsey didn't survived the race.");
-                                       }
+                                   }
+                                   if(p.getHorsey().getHunger() < death){
+                                       p.getHorsey().setAlive(false);
+                                       JOptionPane.showMessageDialog(this.frame, "Your Horsey didn't survived the race.");
                                    }
                                }else{
                                    JOptionPane.showMessageDialog(this.frame, "You bet is too small to count.");
