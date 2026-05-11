@@ -1,10 +1,10 @@
-Horsey Jockey
+#Horsey Jockey
 
 "Welcome to a town called Horseyland, where are plentiful of Horseys around town's plains. You came to this town and bought old ranch, with the goal to get rich and be famous. Your adventure begins here, dear friend."
 
 Horsey Jockey is simulation game with no goal and with no end, programmed in Java, where you will be in boots of new jockey in town full of Horseys, catch them, feed them and race with them .
 
-Mechanics
+##Mechanics
 
 Player attributes:
 
@@ -26,14 +26,14 @@ Market - prices are dynamic and changes each day, and limited. Be sure you have 
 
 Arena - place, where you can bet on your Horsey and will big, be aware tho, betting is expensive and sometimes you can lose everything instantly. Another is Horse's hunger, be it hungry and it will die.
 
-Creators
+##Creators
 
 Only me (mikiondra)
 
-Libraries
+##Libraries
 
 None were used and none are required to open this project.
 
-How to play
+##How to play
 
 Install the full zip and open it in some programme, that supports Java.
